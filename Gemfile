@@ -19,12 +19,15 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'haml-rails'
 gem 'jquery-rails'
 
 # Use github's statsd client
 gem "statsd-ruby", :git => "https://github.com/github/statsd-ruby.git", :branch => 'master', :require => 'statsd'
 
 group :development do
+  gem 'thin'
+  
   gem 'pry'
   gem 'pry-doc'
 end
