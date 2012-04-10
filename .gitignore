@@ -6,9 +6,6 @@ tmp/
 # OS X
 .DS_Store
 
-# Never version this
-config/database.yml
-
 # Pre-compiled assets
 public/assets
 
