@@ -28,9 +28,13 @@ ActiveSupport::Notifications.subscribe /process_action.action_controller/ do |*a
   status = event.payload[:status]
   request_key = "#{controller}.#{action}.#{format}."
   [''].each do |key|
-    ActiveSupport::Notifications.instrument :performance, :action => :timing, :measurement => "#{key}total_duration", :value => event.duration
-    ActiveSupport::Notifications.instrument :performance, :action => :timing, :measurement => "#{key}db_time", :value => event.payload[:db_runtime]
-    ActiveSupport::Notifications.instrument :performance, :action => :timing, :measurement => "#{key}view_time", :value => event.payload[:view_runtime]
-    ActiveSupport::Notifications.instrument :performance, :measurement => "#{key}status.#{status}" 
+    ActiveSupport::Notifications.instrument :performance, :action => :timing, 
+      :measurement => "#{key}total_duration", :value => event.duration
+    ActiveSupport::Notifications.instrument :performance, :action => :timing, 
+      :measurement => "#{key}db_time", :value => event.payload[:db_runtime]
+    ActiveSupport::Notifications.instrument :performance, :action => :timing, 
+      :measurement => "#{key}view_time", :value => event.payload[:view_runtime]
+    ActiveSupport::Notifications.instrument :performance, 
+      :measurement => "#{key}status.#{status}" 
   end
 end
